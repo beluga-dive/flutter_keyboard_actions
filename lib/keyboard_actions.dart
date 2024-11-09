@@ -87,23 +87,23 @@ class KeyboardActions extends StatefulWidget {
   final bool keepFocusOnTappingNode;
 
   /// Override default height of the bar. `null` is dynamic height
-  final double? barSize;
+  final double barSize;
 
-  const KeyboardActions(
-      {this.child,
-      this.bottomAvoiderScrollPhysics,
-      this.enable = true,
-      this.autoScroll = true,
-      this.isDialog = false,
-      @Deprecated('Use tapOutsideBehavior instead.')
-          this.tapOutsideToDismiss = false,
-      this.tapOutsideBehavior = TapOutsideBehavior.none,
-      required this.config,
-      this.overscroll = 12.0,
-      this.disableScroll = false,
-      this.keepFocusOnTappingNode = false,
-      this.barSize = _kBarSize})
-      : assert(child != null);
+  const KeyboardActions({
+    this.child,
+    this.bottomAvoiderScrollPhysics,
+    this.enable = true,
+    this.autoScroll = true,
+    this.isDialog = false,
+    @Deprecated('Use tapOutsideBehavior instead.')
+    this.tapOutsideToDismiss = false,
+    this.tapOutsideBehavior = TapOutsideBehavior.none,
+    required this.config,
+    this.overscroll = 12.0,
+    this.disableScroll = false,
+    this.keepFocusOnTappingNode = false,
+    this.barSize = _kBarSize,
+  }) : assert(child != null);
 
   @override
   KeyboardActionstate createState() => KeyboardActionstate();
@@ -414,7 +414,7 @@ class KeyboardActionstate extends State<KeyboardActions>
     }
 
     double newOffset = _currentAction!.displayActionBar
-        ? _kBarSize
+        ? widget.barSize
         : 0; // offset for the actions bar
 
     final keyboardHeight = EdgeInsets.fromWindowPadding(
